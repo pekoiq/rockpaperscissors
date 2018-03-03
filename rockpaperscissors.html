@@ -31,7 +31,7 @@ if (totalPoints == 6 && playerPoints == computerPoints) {
   return alert("You scored " + playerPoints + ". Computer scored " + computerPoints + ". Tie!")};
 
     const computerSelection = computerPlay();
-    var playerSelection = prompt("Rock, Paper, Scissors?");
+    var playerSelection = prompt("Rock, Paper, Scissors? You have " + playerPoints + " wins. Computer has " + computerPoints + " wins.");
     console.log(playRound(playerSelection, computerSelection));
     }
 }
