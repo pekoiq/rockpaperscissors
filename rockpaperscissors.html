@@ -11,39 +11,60 @@
 
   <script>
 
+  let playerPoints = 0;
+  let computerPoints = 0;
+  var totalPoints = 0
 
+  function computerPlay(arr) {
+    arr = ["rock", "paper", "scissors"];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
-var playerSelection = prompt("Rock, Paper, Scissors?");
+function game() {
+for (i = 0; i < 6; i++)  {
+totalPoints++;
+if (totalPoints == 6 && playerPoints > computerPoints) {
+  return alert("You scored " + playerPoints + ". Computer scored " + computerPoints + ". You Win!")};
+if (totalPoints == 6 && playerPoints < computerPoints) {
+  return alert("You scored " + playerPoints + ". Computer scored " + computerPoints + ". Computer Wins!")};
+if (totalPoints == 6 && playerPoints == computerPoints) {
+  return alert("You scored " + playerPoints + ". Computer scored " + computerPoints + ". Tie!")};
+
+    const computerSelection = computerPlay();
+    var playerSelection = prompt("Rock, Paper, Scissors?");
+    console.log(playRound(playerSelection, computerSelection));
+    }
+}
 
 function playRound(playerSelection, computerSelection) {
 playerSelection = playerSelection.toLowerCase()
   if (playerSelection == 'rock' && computerSelection == 'scissors') {
-    return "Rock beats Scissors. You win!";}
+playerPoints += 1;
+    return "Rock beats Scissors. You win! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'rock' && computerSelection == 'paper') {
-    return "Paper beats Rock. Computer wins!";}
+    computerPoints += 1;
+    return  "Paper beats Rock. Computer wins! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'rock' && computerSelection == 'rock') {
-    return "Rock equals Rock. Tie!";}
+    return "Rock equals Rock. Tie! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'paper' && computerSelection == 'scissors') {
-    return "Scissors beats Paper. Computer Wins!";}
+    computerPoints += 1;
+    return "Scissors beats Paper. Computer Wins! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'paper' && computerSelection == 'paper') {
-    return "Paper equals Paper. Tie!";}
+    return "Paper equals Paper. Tie! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'paper' && computerSelection == 'rock') {
-    return "Paper beats Rock. You win!";}
+    playerPoints += 1;
+    return "Paper beats Rock. You win! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'scissors' && computerSelection == 'scissors') {
-    return "Scissors equals Scissors. Tie!";}
+    return "Scissors equals Scissors. Tie! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'scissors' && computerSelection == 'paper') {
-    return "Scissors beats Paper. You win!";}
+    playerPoints += 1;
+    return "Scissors beats Paper. You win! " + playerPoints + "-" + computerPoints;}
   if (playerSelection == 'scissors' && computerSelection == 'rock') {
-    return "Scissors beats Paper. Computer Wins!";}
+    computerPoints += 1;
+    return "Scissors beats Paper. Computer Wins! " + playerPoints + "-" + computerPoints;}
 
 }
-function computerPlay(arr) {
-  arr = ["rock", "paper", "scissors"];
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-const computerSelection = computerPlay()
-console.log(playRound(playerSelection, computerSelection))
-
+game()
     </script>
 </body>
 </html>
