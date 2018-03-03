@@ -13,9 +13,9 @@
 
   let playerPoints = 0;
   let computerPoints = 0;
-  var totalPoints = 0
+  let totalPoints = 0
 
-  function computerPlay(arr) {
+function computerPlay(arr) {
     arr = ["rock", "paper", "scissors"];
     return arr[Math.floor(Math.random() * arr.length)];
   }
@@ -30,14 +30,29 @@ if (totalPoints == 6 && playerPoints < computerPoints) {
 if (totalPoints == 6 && playerPoints == computerPoints) {
   return alert("You scored " + playerPoints + ". Computer scored " + computerPoints + ". Tie!")};
 
-    const computerSelection = computerPlay();
-    var playerSelection = prompt("Rock, Paper, Scissors? You have " + playerPoints + " wins. Computer has " + computerPoints + " wins.");
+const computerSelection = computerPlay();
+//ensure proper user input.
+loop:
+    while(true){
+        var playerSelection = prompt("Rock, Paper, Scissors? You have " + playerPoints + " wins. Computer has " + computerPoints + " wins.").toLowerCase();
+        switch (playerSelection) {
+            case "rock":
+                field = "Rock";
+                break loop;
+            case "paper":
+                field = "Paper";
+                break loop;
+            case "scissors":
+                field = "Scissors";
+                break loop;
+            default: alert("Please enter a valid play");
+        }
+    }
     console.log(playRound(playerSelection, computerSelection));
     }
 }
 
 function playRound(playerSelection, computerSelection) {
-playerSelection = playerSelection.toLowerCase()
   if (playerSelection == 'rock' && computerSelection == 'scissors') {
 playerPoints += 1;
     return "Rock beats Scissors. You win! " + playerPoints + "-" + computerPoints;}
